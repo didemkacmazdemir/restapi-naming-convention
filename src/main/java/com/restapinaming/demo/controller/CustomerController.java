@@ -14,27 +14,27 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
     // Find
-    @GetMapping("/customers")
+    @GetMapping("/v1/customers")
     List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
     // Save
-    @PostMapping("/customers")
+    @PostMapping("/v1/customers")
     @ResponseStatus(HttpStatus.CREATED)
     Customer newCustomer(@RequestBody Customer newCustomer) {
         return customerRepository.save(newCustomer);
     }
 
     // Find
-    @GetMapping("/customers/{id}")
+    @GetMapping("/v1/customers/{id}")
     Customer findOne(@PathVariable Long id) {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException(id));
     }
 
     // Save or update
-    @PutMapping("/customers/{id}")
+    @PutMapping("/v1/customers/{id}")
     Customer saveOrUpdate(@RequestBody Customer newCustomer, @PathVariable Long id) {
 
         return customerRepository.findById(id)
@@ -50,7 +50,7 @@ public class CustomerController {
     }
 
 
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping("/v1/customers/{id}")
     void deleteBook(@PathVariable Long id) {
         customerRepository.deleteById(id);
     }

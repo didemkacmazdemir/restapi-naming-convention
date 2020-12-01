@@ -40,4 +40,31 @@ Delete -> Delete
  
  
  
+ 
+ Postman request
+ 
+ GET All -> http://localhost:8080/customers
+ 
+ POST -> http://localhost:8080/customers
+ 
+ {
+    "id" : 1,
+    "name" : "Didem",
+    "surname" : "Demir"
+}
+
+GET Single -> http://localhost:8080/customers/1
+
+PUT -> http://localhost:8080/customers/1
+
+{
+    "id" : 2,
+    "name" : "Didem",
+    "surname" : "Demir"
+}
+
+DELETE -> http://localhost:8080/customers/1
+ 
+ 
+ 
   

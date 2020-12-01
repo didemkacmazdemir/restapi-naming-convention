@@ -48,9 +48,9 @@ Delete -> Delete
  
  Postman request
  
- GET All -> http://localhost:8080/customers
+ GET All -> http://localhost:8080/v1/customers
  
- POST -> http://localhost:8080/customers
+ POST -> http://localhost:8080/v1/customers
  
  {
     "id" : 1,
@@ -58,9 +58,9 @@ Delete -> Delete
     "surname" : "Demir"
 }
 
-GET Single -> http://localhost:8080/customers/1
+GET Single -> http://localhost:8080/v1/customers/1
 
-PUT -> http://localhost:8080/customers/1
+PUT -> http://localhost:8080/v1/customers/1
 
 {
     "id" : 2,
@@ -68,7 +68,7 @@ PUT -> http://localhost:8080/customers/1
     "surname" : "Demir"
 }
 
-DELETE -> http://localhost:8080/customers/1
+DELETE -> http://localhost:8080/v1/customers/1
  
  
  https://www.sitepoint.com/build-restful-apis-best-practices/

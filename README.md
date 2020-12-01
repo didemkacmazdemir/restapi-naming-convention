@@ -16,10 +16,15 @@ Delete -> Delete
 3-) Correct use of status codes
 
   200 (OK): The request has been successfully handled and completed.
+  
   201 (Created): Indicates the successful creation of a resource.
+  
   400 (Bad Request): Represents a client-side error. That is, the request has been malformed or missing request parameters.
+  
   401 (Unauthorized): You tried accessing a resource for which you don’t have permission.
+  
   404 (Not Found): The requested resource doesn’t exist.
+  
   500 (Internal Server Error): Whenever the server raises an exception during the request execution.
   
 4-) API versioning
@@ -66,5 +71,5 @@ PUT -> http://localhost:8080/customers/1
 DELETE -> http://localhost:8080/customers/1
  
  
- 
+ https://www.sitepoint.com/build-restful-apis-best-practices/
   

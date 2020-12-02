@@ -3,8 +3,11 @@
 1-) Use HTTP methods correctly
 
 Find -> Get
+
 Save -> Post
+
 Update -> Put
+
 Delete -> Delete
 
 

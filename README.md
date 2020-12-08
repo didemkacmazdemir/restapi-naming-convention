@@ -28,7 +28,9 @@ https://www.example.com/v1/employees/1?last_name=Citizen&date_of_birth=1999-12-3
 4-)Resource adı coğul ve isim olmalı. Fiil kullanılmamalı.
 
 https://www.example.com/v1/photos
+
 https://www.example.com/v1/users
+
 https://www.example.com/v1/computers
 
 
@@ -36,7 +38,9 @@ https://www.example.com/v1/computers
 3-)Tek bir resource ile ilgili işlem yapılmak istenildiğinde, parametre olarak verilmeli
 
 https://www.example.com/v1/photos/1 -> 1 no lu fotograf ile ilgili işlem yap
+
 https://www.example.com/v1/users/2536 -> 2536 id li user ı ile ilgili işlem yap
+
 https://www.example.com/v1/computers/hp -> hp markalı bilgisayar ile ilgili işlem yap
 
 
@@ -50,6 +54,7 @@ Avivasa da Swagger ile dökümantasyon yapımı yapılmaktadır.
 5-) Resource isimlendirilirken küçük harflerden oluşmalı camel case kullanılmamalı.
 
 https://www.example.com/v1/usersPhotos -> yanlış kullanım
+
 https://www.example.com/v1/users-photos -> doğru kullanım
 
 
@@ -62,13 +67,21 @@ https://www.example.com/v1/users-photos -> doğru kullanım
 ?filters=creation_date =\> 2001-09-20T13:00:00 and creation_date \<= 2001-09-21T13:00:00 and first_name like 'fred' and post_code=3000
 
 Filtreleme ifadeleri;
+
 >= Greater than or equalled to
+
 => Equalled to or greater than
+
 > Greater than
+
 < Less than
+
 <= Less than or equalled to
+
 =< Equalled to or less than
+
 = Equalled
+
 != Not equalled
 
 
@@ -79,6 +92,7 @@ Filtreleme örneği
 ?filters=creation_date =\> 2001-09-20T13:00:00 and creation_date \<= 2001-09-21T13:00:00 and first_name like 'fred' and post_code=3000
 
 Paging örneği;
+
 ?filters=start_page =\> 0 and end_page \<= 10
 
 
@@ -92,6 +106,7 @@ Paging örneği;
      Birden fazla filtreyi bir resource a uygulamak istediğimizde kullanılır. → /v1/employees?department-id=100&year-of-birth=1987.
 
      Filtre sayısı 3 den fazla olduğunda json payload olarak POST method kullanarak gönderilmelidir.
+     
          POST /v1/employees/search
          {
            "firstName" : "Arun",
@@ -108,7 +123,9 @@ CRUD Ornekleri
 Tüm calısanların listesini çekme → GET -> https://www.example.com/v1/employees
 
 Tüm employee lerin filtrelenerek çekilmesi;
+
 GET -> https://www.example.com/v1/employees?year=2011&sort=desc
+
 GET -> https://www.example.com/v1/employees?section=economy&year=2011
 
 Id ile tek bir employee çekme → GET https://www.example.com/v1/employees/1234

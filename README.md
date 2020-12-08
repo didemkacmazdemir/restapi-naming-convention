@@ -1,78 +1,125 @@
 # restapi-naming-convention
 
-1-) Use HTTP methods correctly
+1-) Http method ları amaca uygun kullanımı çok önemlidir.
 
-Find -> Get
+GET -> Resource dan bir data almak için kullanılır.
 
-Save -> Post
+POST -> Resource a yeni bir data eklemek için kullanılır
 
-Update -> Put
+PUT -> Resource da update işlemi gerçekleştirilecekse kullanılmalıdır.
 
-Delete -> Delete
+DELETE -> Data silinmesi işleminde kullanılır.
 
 
-2-)  use plural resource name, dont use Verb and you should use noun instead.
 
-  GET /authors
-  
-  
-3-) Correct use of status codes
+2-)Rest api de kullanılan path parameter birden fazla kelime içerdiğinde camel case yerine dash(-) kullanımı best practice dir .
+Bu kullanım okunabilirliği arttırır.
 
-  200 (OK): The request has been successfully handled and completed.
-  
-  201 (Created): Indicates the successful creation of a resource.
-  
-  400 (Bad Request): Represents a client-side error. That is, the request has been malformed or missing request parameters.
-  
-  401 (Unauthorized): You tried accessing a resource for which you don’t have permission.
-  
-  404 (Not Found): The requested resource doesn’t exist.
-  
-  500 (Internal Server Error): Whenever the server raises an exception during the request execution.
-  
-4-) API versioning
+https://www.example.com/v1/employees/start-year/2011
 
-  It’s an effective way of communicating breaking changes to your users.
 
-  /v1/authors/3/books
 
-5-)Document your API
+3-) Rest api de query parameter birden fazla kelime içerdiğinde underscore ile ayrılmalı (_)
 
-   swaggwer library used for documentation.
-  
- 6-) Avoid of using camelCase, you can use lower case for long naming resources.
- 
-  /book-management/3/services
-  
- 7-)you can use dashes(-) instead of using underscrore(_) while concating resource name.
- 
- 
- 
- 
- Postman request
- 
- GET All -> http://localhost:8080/v1/customers
- 
- POST -> http://localhost:8080/v1/customers
- 
- {
-    "id" : 1,
-    "name" : "Didem",
-    "surname" : "Demir"
-}
+https://www.example.com/v1/employees/1?last_name=Citizen&date_of_birth=1999-12-31
 
-GET Single -> http://localhost:8080/v1/customers/1
 
-PUT -> http://localhost:8080/v1/customers/1
 
-{
-    "id" : 2,
-    "name" : "Didem",
-    "surname" : "Demir"
-}
+4-)Resource adı coğul ve isim olmalı. Fiil kullanılmamalı.
 
-DELETE -> http://localhost:8080/v1/customers/1
- 
- 
- https://www.sitepoint.com/build-restful-apis-best-practices/
-  
+https://www.example.com/v1/photos
+https://www.example.com/v1/users
+https://www.example.com/v1/computers
+
+
+
+3-)Tek bir resource ile ilgili işlem yapılmak istenildiğinde, parametre olarak verilmeli
+
+https://www.example.com/v1/photos/1 -> 1 no lu fotograf ile ilgili işlem yap
+https://www.example.com/v1/users/2536 -> 2536 id li user ı ile ilgili işlem yap
+https://www.example.com/v1/computers/hp -> hp markalı bilgisayar ile ilgili işlem yap
+
+
+
+4-) Api versionlama ve Rest api dökümatasyonu mutlaka yapılmalı.
+
+Avivasa da Swagger ile dökümantasyon yapımı yapılmaktadır.
+
+
+
+5-) Resource isimlendirilirken küçük harflerden oluşmalı camel case kullanılmamalı.
+
+https://www.example.com/v1/usersPhotos -> yanlış kullanım
+https://www.example.com/v1/users-photos -> doğru kullanım
+
+
+6-) Boolean tip değişken için resource isimlendirilirken is-, has- ile başlamamalı.
+
+7-) Pagination ve Shorting rest apiye nasıl uygulanmalı
+
+örnek
+
+?filters=creation_date =\> 2001-09-20T13:00:00 and creation_date \<= 2001-09-21T13:00:00 and first_name like 'fred' and post_code=3000
+
+Filtreleme ifadeleri;
+>= Greater than or equalled to
+=> Equalled to or greater than
+> Greater than
+< Less than
+<= Less than or equalled to
+=< Equalled to or less than
+= Equalled
+!= Not equalled
+
+
+Not : The AND, OR conditions are supported.
+
+Filtreleme örneği
+
+?filters=creation_date =\> 2001-09-20T13:00:00 and creation_date \<= 2001-09-21T13:00:00 and first_name like 'fred' and post_code=3000
+
+Paging örneği;
+?filters=start_page =\> 0 and end_page \<= 10
+
+
+
+8-) Path Param ve Query Param Seçimi nasıl yapılmalı
+
+     İdentifier ile bir resource gidilmek istendiğinde kullanılmalıdır.  →  /v1/employees/{employee-id}
+
+     Tek bir filtre uygulanarak resource a gidilmek istenildiğinde kullanılmalıdır. →  /v1/employees/department/{department-id}
+
+     Birden fazla filtreyi bir resource a uygulamak istediğimizde kullanılır. → /v1/employees?department-id=100&year-of-birth=1987.
+
+     Filtre sayısı 3 den fazla olduğunda json payload olarak POST method kullanarak gönderilmelidir.
+         POST /v1/employees/search
+         {
+           "firstName" : "Arun",
+           "lastName" : "Chandru",
+           "email" : "myid@email.com",
+           "phone" : "1231231234",
+           "zipcode" : "33333"
+           "type" : "Permanent"
+         }
+
+CRUD Ornekleri
+
+
+Tüm calısanların listesini çekme → GET -> https://www.example.com/v1/employees
+
+Tüm employee lerin filtrelenerek çekilmesi;
+GET -> https://www.example.com/v1/employees?year=2011&sort=desc
+GET -> https://www.example.com/v1/employees?section=economy&year=2011
+
+Id ile tek bir employee çekme → GET https://www.example.com/v1/employees/1234
+
+Id li employee nin bulunduğu tüm lokasyonları almak istediğimizde → GET https://www.example.com/v1/employees/1234/locations
+
+Birden fazla data yı GET method da birden fazla alanı filtre olarak uygulamak istediğimizde → GET -> https://www.example.com/v1/employees/1234/job-title,start-date
+
+
+Detaylı açıklamalar için aşağıdaki linkleri i öneririm.
+
+https://api.gov.au/standards/national_api_standards/naming-conventions.html
+
+https://medium.com/@bcarunmail/rest-api-best-practices-volume-1-83c6ecaddd8c

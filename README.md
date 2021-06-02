@@ -54,7 +54,7 @@ https://www.example.com/v1/usersPhotos -> yanlış kullanım
 https://www.example.com/v1/users-photos -> doğru kullanım
 
 
-6-) Boolean tip değişken için resource isimlendirilirken is-, has- ile başlamamalı.
+6-) Resource isimlendirilirken is, has, can kullanılabilir. Boolean tip değişken için resource isimlendirilirken is-, has- ile başlamamalı.
 
 7-) Pagination ve Shorting rest apiye nasıl uygulanmalı
 

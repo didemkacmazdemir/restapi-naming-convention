@@ -47,10 +47,6 @@ https://www.example.com/v1/computers/hp -> hp markalı bilgisayar ile ilgili iş
 
 4-) Api versionlama ve Rest api dökümatasyonu mutlaka yapılmalı.
 
-Avivasa da Swagger ile dökümantasyon yapımı yapılmaktadır.
-
-
-
 5-) Resource isimlendirilirken küçük harflerden oluşmalı camel case kullanılmamalı.
 
 https://www.example.com/v1/usersPhotos -> yanlış kullanım

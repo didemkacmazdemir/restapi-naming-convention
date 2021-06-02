@@ -19,7 +19,7 @@ https://www.example.com/v1/employees/start-year/2011
 
 
 
-3-) Rest api de query parameter birden fazla kelime içerdiğinde underscore ile ayrılmalı (_)
+3-) Rest api de query parameter birden fazla kelime içerdiğinde underscore ile ayrılmalı (_)- (snake_case)
 
 https://www.example.com/v1/employees/1?last_name=Citizen&date_of_birth=1999-12-31
 
